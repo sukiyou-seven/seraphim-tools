@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'" />
+  <title>Seraphim Tools 工具箱</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <aside id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">S</div>
+        <div class="brand-text">
+          <div class="brand-name">Seraphim Tools</div>
+          <div class="brand-sub">跨平台工具箱</div>
+        </div>
+      </div>
+      <nav id="tool-nav"></nav>
+      <div class="sidebar-foot">
+        <button id="theme-toggle" class="ghost-btn" title="切换深浅色">🌗 跟随系统</button>
+        <div id="version-line" class="version-line"></div>
+      </div>
+    </aside>
+    <main id="main">
+      <div id="tool-root"></div>
+    </main>
+  </div>
+  <div id="toast-layer"></div>
+
+  <script src="vendor/jsQR.js"></script>
+  <script src="app.js"></script>
+  <script src="tools/qrcode.js"></script>
+  <script src="tools/codec.js"></script>
+  <script src="tools/crypto.js"></script>
+  <script src="tools/units.js"></script>
+  <script src="tools/generator.js"></script>
+  <script src="tools/devkit.js"></script>
+  <script src="tools/netkit.js"></script>
+  <script src="tools/picker.js"></script>
+  <script src="tools/prompt.js"></script>
+  <script src="boot.js"></script>
+</body>
+</html>

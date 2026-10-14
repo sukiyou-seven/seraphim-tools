@@ -1,0 +1,58 @@
+# Seraphim Tools（Electron 版）
+
+跨平台开发者工具箱，Electron 实现（macOS / Windows / Linux），与 macOS SwiftUI 原生版同源的工具思路。
+
+![platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-blue)
+
+## 工具清单（首批 9 个）
+
+| 工具 | 说明 |
+|---|---|
+| 🔲 二维码 | 文本转二维码（4 档纠错、PNG 下载）；图片/剪贴板反解（jsQR） |
+| 🔁 编码解码 | Base64 / URL / Unicode 转义 / HTML 实体 / Hex 双向 + JWT 解码（含过期判断） |
+| 🔐 加密解密 | MD5 / SHA-1 / SHA-256 / SHA-512 / HMAC（Node crypto）；AES-256-GCM 口令加解密（PBKDF2 150k 派生） |
+| 📐 单位换算 | 长度 / 重量 / 温度 / 数据 / 面积 / 体积 / 速度 / 时间，含市制单位 |
+| 🎲 生成器 | UUID v4 / v7（批量）、随机密码（字符集可选、防取模偏差）、随机字符串 |
+| 🧰 开发辅助 | JSON 美化压缩校验、正则测试（高亮+分组明细）、时间戳/日期双向 |
+| 🌐 网络工具 | 本机网卡、公网出口 IP（多源回退）、HTTP 请求测试（主进程发起无 CORS，状态/耗时/响应头/体） |
+| 🎨 屏幕取色 | 截屏点选取色，RGB/HEX，历史色板一键复制 |
+| 💬 提示词库 | 12 个分类模板，`{{变量}}` 占位替换，收藏 + 搜索 |
+
+侧边栏按「常用 / 开发 / 桌面 / AI 创作」分组，深浅色主题可切换（默认跟随系统），所有状态本地持久化。
+
+## 运行
+
+```bash
+npm install
+npm start
+```
+
+> 国内网络安装 electron 二进制慢时：
+> ```bash
+> ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/" npm install
+> ```
+
+## 架构
+
+- `main.js` — 主进程：窗口、IPC（哈希 / HTTP / 网卡 / 公网 IP / 截屏）
+- `preload.js` — contextBridge 安全暴露，渲染进程不持 Node 权限
+- `renderer/app.js` — 工具注册表 + 侧边栏路由 + 通用助手（el / copy / toast / store）
+- `renderer/tools/*.js` — 每个工具一个文件，`Seraphim.register({...})` 即自动进侧边栏
+- CSP：`script-src 'self'`，无远程依赖，完全离线可用（公网 IP 查询除外）
+
+### 新增一个工具
+
+1. 在 `renderer/tools/` 新建 `mytool.js`
+2. `Seraphim.register({ id, name, icon, category, desc, mount(root) { ... } })`
+3. 在 `index.html` 加一行 `<script>`
+
+## Roadmap
+
+- [ ] 更多 SwiftUI 版工具移植（v2ray 代理、SSH 密钥、Git 助手、API 余额等需要系统能力的工具）
+- [ ] AI 驱动（接各家 OpenAI 兼容 API）
+- [ ] 打包分发（electron-builder → dmg / nsis / AppImage）
+- [ ] 原型助手（Mermaid 流程图）
+
+## License
+
+MIT
