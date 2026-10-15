@@ -3,6 +3,8 @@
 跨平台开发者工具箱，Electron 实现（macOS / Windows / Linux），与 macOS SwiftUI 原生版同源的工具思路。
 
 ![platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-blue)
+![release](https://img.shields.io/github/v/release/sukiyou-seven/seraphim-tools)
+![license](https://img.shields.io/badge/license-MIT-green)
 
 ## 工具清单（首批 9 个）
 

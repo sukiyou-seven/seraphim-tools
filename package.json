@@ -1,7 +1,7 @@
 {
   "name": "seraphim-tools",
   "productName": "Seraphim Tools",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "description": "跨平台开发者工具箱（Electron 版）：二维码 / 编解码 / 加密 / 单位换算 / 生成器 / 开发辅助 / 网络 / 取色 / 提示词",
   "main": "main.js",
   "scripts": {
