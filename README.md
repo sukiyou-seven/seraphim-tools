@@ -23,6 +23,20 @@
 
 侧边栏按「常用 / 开发 / 桌面 / AI 创作」分组，深浅色主题可切换（默认跟随系统），所有状态本地持久化。
 
+## 下载安装包
+
+到 [Releases](https://github.com/sukiyou-seven/seraphim-tools/releases) 下载对应平台的安装包（由 GitHub Actions 自动构建）：
+
+| 平台 | 文件 |
+|---|---|
+| macOS（Apple 芯片） | `SeraphimTools-1.0.0-mac-arm64.dmg` |
+| macOS（Intel） | `SeraphimTools-1.0.0-mac-x64.dmg` |
+| Windows（64 位） | `SeraphimTools-1.0.0-win-x64.exe` |
+| Linux（64 位） | `SeraphimTools-1.0.0-linux-x64.AppImage` / `.deb` |
+
+> 安装包**未签名**：macOS 首次打开请右键 →「打开」；Windows 的 SmartScreen 提示点「更多信息 → 仍要运行」。
+> 推送 `v*` tag 会自动重新构建三个平台并上传到对应 Release；也可以在 Actions 里手动触发并指定 tag。
+
 ## 运行
 
 ```bash
@@ -61,7 +75,7 @@ npm start
 - [x] 鼠标连点 / 键盘连发 + 全局快捷键（v1.0.0）
 - [ ] 更多 SwiftUI 版工具移植（v2ray 代理、SSH 密钥、Git 助手、API 余额等需要系统能力的工具）
 - [ ] AI 驱动（接各家 OpenAI 兼容 API）
-- [ ] 打包分发（electron-builder → dmg / nsis / AppImage）
+- [x] 打包分发（electron-builder → dmg / nsis / AppImage，GitHub Actions 自动构建）
 - [ ] 原型助手（Mermaid 流程图）
 
 ## License
