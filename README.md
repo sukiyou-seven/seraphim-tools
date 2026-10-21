@@ -32,7 +32,7 @@
 | macOS（Apple 芯片） | `SeraphimTools-1.0.0-mac-arm64.dmg` |
 | macOS（Intel） | `SeraphimTools-1.0.0-mac-x64.dmg` |
 | Windows（64 位） | `SeraphimTools-1.0.0-win-x64.exe` |
-| Linux（64 位） | `SeraphimTools-1.0.0-linux-x64.AppImage` / `.deb` |
+| Linux（64 位） | `SeraphimTools-1.0.0-linux-x86_64.AppImage` / `SeraphimTools-1.0.0-linux-amd64.deb` |
 
 > 安装包**未签名**：macOS 首次打开请右键 →「打开」；Windows 的 SmartScreen 提示点「更多信息 → 仍要运行」。
 > 推送 `v*` tag 会自动重新构建三个平台并上传到对应 Release；也可以在 Actions 里手动触发并指定 tag。
