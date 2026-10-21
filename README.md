@@ -6,7 +6,7 @@
 ![release](https://img.shields.io/github/v/release/sukiyou-seven/seraphim-tools)
 ![license](https://img.shields.io/badge/license-MIT-green)
 
-## 工具清单（首批 9 个）
+## 工具清单（10 个）
 
 | 工具 | 说明 |
 |---|---|
@@ -19,6 +19,7 @@
 | 🌐 网络工具 | 本机网卡、公网出口 IP（多源回退）、HTTP 请求测试（主进程发起无 CORS，状态/耗时/响应头/体） |
 | 🎨 屏幕取色 | 截屏点选取色，RGB/HEX，历史色板一键复制 |
 | 💬 提示词库 | 12 个分类模板，`{{变量}}` 占位替换，收藏 + 搜索 |
+| 🖱️ 鼠标连点 | 鼠标连点（左/右/中键、单击/双击、跟随指针或固定坐标）/ 键盘连发（组合键、按住不放）；全局快捷键 F6 启停、F7 拾取位置 |
 
 侧边栏按「常用 / 开发 / 桌面 / AI 创作」分组，深浅色主题可切换（默认跟随系统），所有状态本地持久化。
 
@@ -29,6 +30,11 @@ npm install
 npm start
 ```
 
+> 鼠标连点（`@nut-tree-fork/nut-js`）需要系统级输入权限：
+> - **macOS**：第一次点「开始」后系统会提示，到「系统设置 → 隐私与安全性 → 辅助功能」里勾上当前运行的程序（`npm start` 时是 **Electron**，打包后是工具箱）。没有授权时合成事件是静默失败的，页面会直接拦下。
+> - **Windows**：一般无需额外授权；若被安全软件拦截需放行。
+> - **Linux**：需要 X11（`xdotool`/XTest 由 nut-js 自带）。
+
 > 国内网络安装 electron 二进制慢时：
 > ```bash
 > ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/" npm install
@@ -36,10 +42,12 @@ npm start
 
 ## 架构
 
-- `main.js` — 主进程：窗口、IPC（哈希 / HTTP / 网卡 / 公网 IP / 截屏）
+- `main.js` — 主进程：窗口、IPC（哈希 / HTTP / 网卡 / 公网 IP / 截屏 / 连点）、全局热键
+- `autoclick-engine.js` — 连点状态机（纯 Node，鼠标/键盘依赖注入，可脱离权限单测）
 - `preload.js` — contextBridge 安全暴露，渲染进程不持 Node 权限
 - `renderer/app.js` — 工具注册表 + 侧边栏路由 + 通用助手（el / copy / toast / store）
 - `renderer/tools/*.js` — 每个工具一个文件，`Seraphim.register({...})` 即自动进侧边栏
+- 连点事件由 `@nut-tree-fork/nut-js` 合成（跨平台，macOS 需辅助功能授权）
 - CSP：`script-src 'self'`，无远程依赖，完全离线可用（公网 IP 查询除外）
 
 ### 新增一个工具
@@ -50,6 +58,7 @@ npm start
 
 ## Roadmap
 
+- [x] 鼠标连点 / 键盘连发 + 全局快捷键（v1.0.0）
 - [ ] 更多 SwiftUI 版工具移植（v2ray 代理、SSH 密钥、Git 助手、API 余额等需要系统能力的工具）
 - [ ] AI 驱动（接各家 OpenAI 兼容 API）
 - [ ] 打包分发（electron-builder → dmg / nsis / AppImage）

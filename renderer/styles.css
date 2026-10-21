@@ -161,3 +161,15 @@ button.btn.secondary { background: var(--panel-2); color: var(--text); border: 1
 /* ---------- 正则高亮 ---------- */
 .re-hl { background: var(--accent-soft); border-radius: 3px; }
 .re-hl.cur { background: var(--accent); color: #fff; }
+
+/* ---------- 鼠标连点 ---------- */
+.status-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--text-dim); flex: none; display: inline-block;
+  transition: background .15s ease;
+}
+.status-dot.running {
+  background: var(--ok);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--ok) 20%, transparent);
+}
+button.btn.danger { background: var(--danger); }
