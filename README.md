@@ -6,6 +6,22 @@
 ![release](https://img.shields.io/github/v/release/sukiyou-seven/seraphim-tools)
 ![license](https://img.shields.io/badge/license-MIT-green)
 
+## 两个版本
+
+这个仓库同时放两套实现：
+
+- **Electron 版**（根目录）：跨平台，macOS / Windows / Linux，下面列的是这一套
+- **macOS 原生版**（[`macos/`](macos/)）：SwiftUI 实现，17 个工具，最低 macOS 14，含 v2ray 代理、SSH 密钥、Git 助手、API 余额等需要系统能力的工具
+
+macOS 原生版构建：
+
+```bash
+cd macos
+./build.sh
+```
+
+详见 [`macos/README.md`](macos/README.md)。
+
 ## 工具清单（10 个）
 
 | 工具 | 说明 |
